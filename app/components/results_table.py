@@ -147,6 +147,10 @@ def render_filters(df: pd.DataFrame) -> pd.DataFrame:
     elif date_filter == 'Ongoing':
         filtered_df = filtered_df[filtered_df['dueDate'] == 'Ongoing']
     
+    # Ensure ID column exists (in case it was lost during filtering)
+    if 'ID' not in filtered_df.columns:
+        filtered_df.insert(0, 'ID', range(1, len(filtered_df) + 1))
+    
     # Show filter results
     if len(filtered_df) != len(df):
         st.info(f"Showing {len(filtered_df)} of {len(df)} obligations")
@@ -265,8 +269,10 @@ def generate_summary_text(df: pd.DataFrame) -> str:
     summary += "\nDETAILED OBLIGATIONS:\n"
     summary += "=" * 50 + "\n"
     
-    for _, row in df.iterrows():
-        summary += f"\nID: {row['ID']}\n"
+    for idx, row in df.iterrows():
+        # Use index + 1 as ID if ID column doesn't exist
+        obligation_id = row.get('ID', idx + 1)
+        summary += f"\nID: {obligation_id}\n"
         summary += f"Risk Level: {row['riskLevel']}\n"
         summary += f"Responsible Party: {row['responsibleParty']}\n"
         summary += f"Due Date: {row['dueDate']}\n"
