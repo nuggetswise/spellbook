@@ -12,10 +12,9 @@ from pathlib import Path
 current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir))
 
-# Import the main app module and run it
+# Import the main app module - this will run the Streamlit app
 from app.main import main, render_error_handling
 
 # Run the main application
-if __name__ == "__main__":
-    main()
-    render_error_handling() 
+main()
+render_error_handling() 

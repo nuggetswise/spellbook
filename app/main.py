@@ -208,8 +208,4 @@ def render_error_handling():
     
     # Show results if available
     if st.session_state.extraction_results:
-        render_results()
-
-if __name__ == "__main__":
-    main()
-    render_error_handling() 
+        render_results() 
