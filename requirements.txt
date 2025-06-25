@@ -1,0 +1,26 @@
+# Core Streamlit UI
+streamlit>=1.28.0
+
+# LLM API Integrations
+openai>=1.0.0
+google-generativeai>=0.3.0
+
+# PDF Processing
+PyMuPDF>=1.23.0
+pdfminer.six>=20221105
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Environment and Configuration
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+
+# Optional: Advanced prompt management
+langchain>=0.1.0
+langchain-openai>=0.1.0
+
+# Utilities
+python-dateutil>=2.8.0
+requests>=2.31.0 
