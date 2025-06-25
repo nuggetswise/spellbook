@@ -166,6 +166,11 @@ def render_interactive_table(df: pd.DataFrame) -> None:
     """
     st.subheader("📊 Obligations Table")
     
+    # Ensure ID column exists
+    if 'ID' not in df.columns:
+        df = df.copy()
+        df.insert(0, 'ID', range(1, len(df) + 1))
+    
     # Prepare table data
     display_df = df[['ID', 'obligation', 'responsibleParty', 'dueDate', 'riskLevel', 'summary']].copy()
     
@@ -198,7 +203,7 @@ def render_interactive_table(df: pd.DataFrame) -> None:
                 col1, col2 = st.columns([1, 3])
                 
                 with col1:
-                    st.write(f"**ID:** {row['ID']}")
+                    st.write(f"**ID:** {row.get('ID', 'N/A')}")
                     st.write(f"**Risk:** {row['riskLevel']}")
                     st.write(f"**Party:** {row['responsibleParty']}")
                     st.write(f"**Due:** {row['dueDate']}")
