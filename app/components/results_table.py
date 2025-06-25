@@ -223,11 +223,16 @@ def render_export_options(df: pd.DataFrame) -> None:
     """
     st.subheader("💾 Export Options")
     
+    # Ensure ID column exists before export
+    export_df = df.copy()
+    if 'ID' not in export_df.columns:
+        export_df.insert(0, 'ID', range(1, len(export_df) + 1))
+    
     col1, col2 = st.columns(2)
     
     with col1:
         # CSV export
-        csv_data = df.to_csv(index=False)
+        csv_data = export_df.to_csv(index=False)
         st.download_button(
             label="📄 Download CSV",
             data=csv_data,
@@ -237,7 +242,7 @@ def render_export_options(df: pd.DataFrame) -> None:
     
     with col2:
         # Summary export
-        summary_text = generate_summary_text(df)
+        summary_text = generate_summary_text(export_df)
         st.download_button(
             label="📝 Download Summary",
             data=summary_text,

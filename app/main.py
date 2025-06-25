@@ -46,7 +46,7 @@ st.title("📋 Contract Obligation Extractor")
 st.markdown("""
 ### 🔍 **Contract Obligation Extractor — Beyond Drafting AI**
 
-> This demo shows how AI can go beyond clause suggestions to help **extract actionable obligations from signed contracts** — something even top legal tools like Spellbook don't offer.
+> This demo illustrates how AI can solve a critical gap in contract management by automatically extracting actionable obligations from signed contracts — helping legal teams track compliance and manage risk more effectively.
 
 **🎯 What Makes This Different:**
 - 🧠 **Real LLM Processing** — Uses actual OpenAI GPT-4 or Google Gemini APIs (no mock data)
